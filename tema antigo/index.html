@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--favicon icon-->
+    <link rel="icon" href="img\icon.webp" type="image/jpg" sizes="16x16">
+
+    <!--title-->
+    <title>ICONNEXT - Operadora Digital</title>
+
+    <!--LLPROD UI KIT-->
+
+    <!-- END LLPROD UI KIT -->
+
+    <!--build:css-->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
+
+    <!-- endbuild -->
+
+    <!-- Vendor Styles-->
+    <link rel="stylesheet" media="screen" href="assets/css/simplebar.min.css"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="assets/css/theme.min.css">
+
+    <!--FONT FAMILY-->
+    <link rel="preload" as="font" href="assets/fonts/iconnext.eot" type="font/woff2" crossorigin="anonymous">
+    <link rel='stylesheet' id='font-awesome-official-css'  href='https://llproduction.com.br/cdn/fontawesome6/css/all.css' media='all' />
+
+    <!--END FONT FAMILY-->
+    <style type="text/css">
+.parent {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+grid-template-rows: 1fr;
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}
+        .modal-body{
+            overflow: auto;
+        }
+
+        .solicitaChip label{
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 16px;
+        }
+
+        .depoimento-img{
+            width: 100px;
+            height: 100px;
+            border-radius: 60px;
+        }
+
+        .ofertasHome{
+            background-color: #6730e3;
+            color: #fff;
+            font-weight: bold;
+            border: #6730e3;
+        }
+        
+        .modal-dialog {
+          width: 100%;
+          height: 100%;
+          padding: 0;
+        }
+
+        .modal-content {
+            height: 100%;
+            border-radius: 0;
+            width: 100% !important;
+            position: fixed;
+            margin: 0;
+            top: 0;
+            right: 0;
+        }
+
+        .peca-chip{
+            background: url('img/Peca-chipm.webp') center top no-repeat;
+            height: 421px;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+
+        .resultadoChip{
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .msgErro{
+            color: red;
+            font-size: 12px;
+            margin-top: -20px;
+            display: block;
+        }
+        .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+      }
+      .page-loading.active > .page-loading-inner {
+        opacity: 1;
+      }
+      .page-loading-inner > span {
+        display: block;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #737491;
+      }
+      .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #766df4;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      .shadow-0 {
+          box-shadow: none!important;
+      }
+      html {
+  scroll-behavior: smooth;
+}
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <!--header section start-->
+    <header class="header navbar navbar-expand-lg navbar-dark navbar-floating navbar-sticky" data-fixed-element="">
+        <div class="container px-0 px-xl-3">
+          <button class="navbar-toggler ms-n2 me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#primaryMenu"><span class="navbar-toggler-icon"></span></button><a class="navbar-brand flex-shrink-0 order-lg-1 mx-auto ms-lg-0 pe-lg-2 me-lg-4" href="index.html"><img class="navbar-floating-logo d-none d-lg-block" src="img/logo/logo-light-large.webp" alt="Iconnext" width="200"><img class="navbar-stuck-logo" src="img/logo/logo-light.webp" alt="ICONNEXT" width="153"><img class="d-lg-none" src="img/logo/logo-light-large.webp" alt="Iconfly" width="58"></a>
+          <div class="d-flex align-items-center order-lg-3 ms-lg-auto"><a class="btn btn-primary" href="#planos" rel="noopener"><i class="ai-shopping-cart fs-lg me-2"></i>Ver <span class="d-none d-lg-inline">Planos</span></a></div>
+          <div class="offcanvas offcanvas-collapse order-lg-2" id="primaryMenu">
+            <div class="offcanvas-header navbar-shadow">
+              <h5 class="mt-1 mb-0">Menu</h5>
+              <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <!-- Menu-->
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown dropdown-mega"><a class="nav-link dropdown-toggle" href="/" >Inicio</a></li>
+                <li class="nav-item dropdown dropdown-mega"><a class="nav-link dropdown-toggle" href="#planos" >Planos</a></li>
+                <li class="nav-item dropdown dropdown-mega"><a class="nav-link dropdown-toggle" href="#sobre-nos" >Sobre Nós</a></li>
+                <li class="nav-item dropdown dropdown-mega"><a class="nav-link dropdown-toggle" href="http://suporte.operadoravirtual.com.br/chat/default" >Web Aplicativo</a></li>
+                <li class="nav-item dropdown dropdown-mega"><a class="nav-link dropdown-toggle" href="#faq" >Dúvidas</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+    <!--header section end-->
+
+    <div class="main">
+
+        <!--hero section start-->
+        <!--hero section start-->
+        <section class="d-flex align-items-center position-relative bg-dark bg-size-cover bg-position-center min-vh-100 overflow-hidden pt-6 pb-lg-5" style="background-image: url(img/presentation/intro/bg.webp;);">
+            <div class="container-fluid pt-4 pb-5 py-lg-5">
+              <div class="row align-items-center py-3">
+                <div class="col-xl-6 col-lg-5 d-flex justify-content-end">
+                  <div class="pt-2 mx-auto mb-5 mb-lg-0 ms-lg-0 me-xl-7 text-center text-lg-start" style="max-width: 495px;">
+                    <h1 class="display-4 text-light pb-2"><span class="fw-light">A ERA DIGITAL CHEGOU, </span>VOCÊ ESTÁ PRONTO?</h1>
+                    <p class="h4 fw-light text-light opacity-70 line-height-base">A ICONNEXT vem revolucionando a sensação de liberdade no coração de cada pessoa e empresa, impulsionando conexões. Seu Influenciador favorito também utiliza, o que está esperando para fazer parte desse time?</p>
+                    <li class="list-inline-item">
+                        <a href='https://play.google.com/store/apps/details?id=mobile.infiniti.app&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+                            <img style="width: 200px;" alt='Disponível no Google Play' src='img/google-play-badge.webp'/></a>
+                    </li>
+                  </div>
+                </div>
+                <div class="col-xl-6 col-lg-7">
+                  <div class="parallax ms-lg-n5" style="max-width: 920px; transform: translate3d(0px, 0px, 0px) rotate(0.0001deg); transform-style: preserve-3d; backface-visibility: hidden; pointer-events: none;">
+                    <div class="parallax-layer position-relative" data-depth="0.1" style="transform: translate3d(1.2px, -1.7px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: relative; display: block; left: 0px; top: 0px;"><img src="img/presentation/intro/layer01.webp" alt="Layer"></div>
+                    <div class="parallax-layer" style="z-index: 2; transform: translate3d(3.7px, -5px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;" data-depth="0.3"><img src="img/presentation/intro/layer02.webp" alt="Layer"></div>
+                    <div class="parallax-layer" data-depth="0.2" style="transform: translate3d(2.5px, -3.4px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;"><img src="img/presentation/intro/layer03.webp" alt="Layer"></div>
+                    <div class="parallax-layer" style="z-index: 3; transform: translate3d(1.2px, -1.7px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;" data-depth="0.1"><img src="img/presentation/intro/layer04.webp" alt="Layer"></div>
+                    <div class="parallax-layer" data-depth="0.15" style="transform: translate3d(1.8px, -2.5px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;"><img src="img/presentation/intro/layer05.webp" alt="Layer"></div>
+                    <div class="parallax-layer" style="z-index: 4; transform: translate3d(3.1px, -4.2px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;" data-depth="0.25"><img src="img/presentation/intro/layer06.webp" alt="Layer"></div>
+                    <div class="parallax-layer" data-depth="0.3" style="transform: translate3d(3.7px, -5px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;"><img src="img/presentation/intro/layer07.webp" alt="Layer"></div>
+                    <div class="parallax-layer" data-depth="0.4" style="transform: translate3d(4.9px, -6.7px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;"><img src="img/presentation/intro/layer08.webp" alt="Layer"></div>
+                    <div class="parallax-layer" data-depth="0.35" style="transform: translate3d(4.3px, -5.9px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;"><img src="img/presentation/intro/layer09.webp" alt="Layer"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        <!--hero section end-->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="
+        margin-top: -8%;
+    ">
+            <path fill="#37384e" fill-opacity="1" d="M0,224L120,197.3C240,171,480,117,720,128C960,139,1200,213,1320,250.7L1440,288L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
+          </svg>
+
+            <!-- Device-->
+    <section hidden id="app" class="container" style="margin-top: -20%;">
+        <div class="mobile-app">
+            <div class="tns-carousel-wrapper pt-lg-2 mt-lg-5">
+              <div class="frame-phone mx-auto">
+                <div class="frame-phone-status-bar text-light"><span class="text-nowrap">9:41 AM</span><span class="text-nowrap text-end"><i class="ai-wifi me-2"></i><i class="ai-battery-charging"></i></span></div>
+                <div class="frame-phone-body">
+                  <div class="tns-carousel-inner" data-carousel-options="{&quot;mode&quot;: &quot;gallery&quot;, &quot;controls&quot;: false, &quot;nav&quot;: false, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 9000}">
+                      <img src="assets/img/mobile-app/device/01.webp" alt="App screen">
+                      <img src="assets/img/mobile-app/device/02.webp" alt="App screen">
+                      <img src="assets/img/mobile-app/device/03.webp" alt="App screen"></div>
+                </div>
+              </div>
+              <div class="tns-carousel-pager text-nowrap text-center">
+                <button class="active" data-nav data-goto="1"></button>
+                <button data-nav data-goto="2"></button>
+                <button data-nav data-goto="3"></button>
+              </div>
+            </div>
+        </div>
+        <li class="list-inline-item">
+            <a href='https://play.google.com/store/apps/details?id=mobile.infiniti.app&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+                <img style="width: 200px;" alt='Disponível no Google Play' src='img/google-play-badge.webp'/></a>
+        </li>
+    </section>
+          
+        <section style="margin-top: -10%;" class="promo-section ptb-100">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-10 col-lg-8">
+                        <div class="section-heading text-center">
+                            <h2>Somos diferentes de tudo que você já viu!</h2>
+                            <p>Uma operadora 100% digital - queremos mudar a forma como você se relaciona com a sua
+                                operadora. Sem treta! Direto e objetivo, com atendimento diferenciado, mais humano,
+                                simples, prático e eficiente. Usando a tecnologia para o que ela foi criada:
+                                <u>facilitar a vida de todos.</u>
+                                <p>Já estamos presentes em mais de 5.000 municípios, atendemos todos os DDD’s, e se quiser,
+                                    você ainda pode trazer seu número de qualquer operadora!</p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-md-center justify-content-sm-center">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-0 single-promo-card single-promo-hover text-center p-2 mt-4">
+                            <div class="card-body">
+                                <div class="pb-2">
+                                    <span class="fab fa-connectdevelop icon-size-lg color-primary"></span>
+                                </div>
+                                <div class="pt-2 pb-3">
+                                    <h5>ICONNEXT - O digital chegou!</h5>
+                                    <p class="mb-0">Se vivemos na era digital por que usar soluções do passado?
+                                        Acabou as filas e as musiquinhas enjoadas.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-0 single-promo-card single-promo-hover text-center p-2 mt-4">
+                            <div class="card-body">
+                                <div class="pb-2">
+                                    <span class="fas fa-headset icon-size-lg color-primary"></span>
+                                </div>
+                                <div class="pt-2 pb-3">
+                                    <h5>Atendimento Digital</h5>
+                                    <p class="mb-0">Chega de burocracias. Resolva tudo de forma digital, de um jeito
+                                        simples, rápido e
+                                        eficiente.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-0 single-promo-card single-promo-hover text-center p-2 mt-4">
+                            <div class="card-body">
+                                <div class="pb-2">
+                                    <span class="fas fa-credit-card icon-size-lg color-primary"></span>
+                                </div>
+                                <div class="pt-2 pb-3">
+                                    <h5>Pagamento Digital</h5>
+                                    <p class="mb-0">Na INFINTI você não precisa ir na lotérica pagar sua fatura, isso é
+                                        coisa do passado! Você faz tudo pelo Web aplicativo.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+      <!-- Pricing-->
+      <section id="planos" class="container my-2 pt-5 my-md-0 pt-md-6 pt-lg-7 pb-4 pb-md-6">
+        <h2 class="text-center pt-2 pb-4">Nossos Planos</h2>
+        <div class="d-flex justify-content-center text-center">
+            <label class="pricing-switch-wrap">
+                <span class="beforeinput year-switch text-success" style="left: 42px;">
+                    BÁSICOS
+                </span>
+                <input type="checkbox" class="d-none" id="js-contcheckbox">
+                <span class="switch-icon"></span>
+                <span class="afterinput year-switch" style="right: 28px;">
+                    DINÂMICOS
+                </span>
+               
+            </label>
+        </div>
+          <div class="row">
+            <div class="col-lg-4 col-sm-6 monthly-price mb-grid-gutter">
+              <div class="card border-0 shadow w-100">
+                <div class="card-img-top bg-secondary text-center py-5 px-grid-gutter">
+                  <h3 class="text-body mb-0">Next 5GB</h3>
+                </div>
+                <div class="card-body px-grid-gutter py-grid-gutter">
+                  <div class="d-flex align-items-end py-2 px-4 mb-4"><span class="h2 fw-normal text-muted mb-1 me-2">R$</span><span class="price display-2 fw-normal text-primary px-1 me-2" data-current-price="34,90" data-new-price="34,90">34,90</span><span class="h3 fs-lg fw-medium text-muted mb-2">por<br>mês</span></div>
+                  <ul class="list-unstyled py-2 mb-4">
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>100 Minutos de ligações</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Assistência Médica por chat</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Whatsapp Grátis</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Internet sem cortes em 30 dias</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Roaming Nacional Grátis</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Acúmulo de Benefícios</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>3GB de Bônus ao fazer a portabilidade no 1° Mês</span></li>
+                </ul>
+                  <div class="text-center mb-2"><a class="btn btn-outline-primary" href="https://loja.infiniti.app/checkout/15133723:1" target="_blank" >Pedir meu Chip!</a></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 monthly-price mb-grid-gutter">
+              <div class="card card-active w-100">
+                <div class="card-img-top bg-gradient text-center py-5 px-grid-gutter">
+                  <h3 class="text-light mb-0">Next 7GB</h3>
+                </div>
+                <div class="card-body px-grid-gutter py-grid-gutter">
+                  <div class="d-flex align-items-end py-2 px-4 mb-4"><span class="h2 fw-normal text-muted mb-1 me-2">R$</span><span class="price display-2 fw-normal text-primary px-1 me-2" data-current-price="44,90" data-new-price="44,90">44,90</span><span class="h3 fs-lg fw-medium text-muted mb-2">por<br>mês</span></div>
+                  <ul class="list-unstyled py-2 mb-4">
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Ligações ILIMITADAS</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Assistência Médica por chat</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Whatsapp Grátis</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Internet sem cortes em 30 dias</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Roaming Nacional Grátis</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Acúmulo de Benefícios</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>3GB de Bônus ao fazer a portabilidade no 1° Mês</span></li>
+                  </ul>
+                  <div class="text-center mb-2"><a class="btn btn-primary" href="https://loja.infiniti.app/checkout/15133723:1" target="_blank">Pedir meu Chip!</a></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 monthly-price mb-grid-gutter">
+                <div class="card border-0 shadow w-100">
+                  <div class="card-img-top bg-secondary text-center py-5 px-grid-gutter">
+                    <h3 class="text-body mb-0">Next 9GB</h3>
+                  </div>
+                  <div class="card-body px-grid-gutter py-grid-gutter">
+                    <div class="d-flex align-items-end py-2 px-4 mb-4"><span class="h2 fw-normal text-muted mb-1 me-2">R$</span><span class="price display-2 fw-normal text-primary px-1 me-2" data-current-price="54,90" data-new-price="54,90">54,90</span><span class="h3 fs-lg fw-medium text-muted mb-2">por<br>mês</span></div>
+                    <ul class="list-unstyled py-2 mb-4">
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Ligações ILIMITADAS</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Assistência Médica por chat</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Whatsapp Grátis</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Internet sem cortes em 30 dias</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Roaming Nacional Grátis</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Acúmulo de Benefícios</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>3GB de Bônus ao fazer a portabilidade no 1° Mês</span></li>
+                    </ul>
+                    <div class="text-center mb-2"><a class="btn btn-outline-primary" href="https://loja.infiniti.app/checkout/15133723:1" target="_blank">Pedir meu Chip!</a></div>
+                  </div>
+                </div>
+              </div>
+            <div class="col-lg-4 col-sm-12 monthly-price mb-grid-gutter">
+              <div class="card border-0 shadow w-100">
+                <div class="card-img-top bg-secondary text-center py-5 px-grid-gutter">
+                  <h3 class="text-body mb-0">Next 17GB</h3>
+                </div>
+                <div class="card-body px-grid-gutter py-grid-gutter">
+                  <div class="d-flex align-items-end py-2 px-4 mb-4"><span class="h2 fw-normal text-muted mb-1 me-2">R$</span><span class="price display-2 fw-normal text-primary px-1 me-2" data-current-price="79,90" data-new-price="79,90">79,90</span><span class="h3 fs-lg fw-medium text-muted mb-2">por<br>mês</span></div>
+                  <ul class="list-unstyled py-2 mb-4">
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Ligações ILIMITADAS</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Assistência Médica por chat</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Whatsapp Grátis</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Internet sem cortes em 30 dias</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Roaming Nacional Grátis</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Acúmulo de Benefícios</span></li>
+                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>3GB de Bônus ao fazer a portabilidade no 1° Mês</span></li>
+                  </ul>
+                  <div class="text-center mb-2"><a class="btn btn-outline-primary" href="https://loja.infiniti.app/checkout/15133723:1" target="_blank">Pedir meu Chip!</a></div>
+                </div>
+              </div>
+            </div>
+                        <!-- Preços Dinâmicos Next 19GB-->
+                        <div style="display: none;" class="col-lg-4 col-sm-6 yearly-price mb-grid-gutter">
+                            <div class="card card-active w-100">
+                              <div class="card-img-top bg-gradient text-center py-5 px-grid-gutter">
+                                <h3 class="text-light mb-0">Next 19GB</h3>
+                              </div>
+                              <div class="card-body px-grid-gutter py-grid-gutter">
+                                <div class="d-flex align-items-end py-2 px-4 mb-4"><span class="h2 fw-normal text-muted mb-1 me-2">R$</span><span class="price display-2 fw-normal text-primary px-1 me-2" data-current-price="94,90" data-new-price="94,90">94,90</span><span class="h3 fs-lg fw-medium text-muted mb-2">por<br>mês</span></div>
+                                <ul class="list-unstyled py-2 mb-4">
+                                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Ligações ILIMITADAS</span></li>
+                                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Assistência Médica por chat</span></li>
+                                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Whatsapp Grátis</span></li>
+                                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Internet sem cortes em 30 dias</span></li>
+                                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Roaming Nacional Grátis</span></li>
+                                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Acúmulo de Benefícios</span></li>
+                                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>3GB de Bônus ao fazer a portabilidade no 1° Mês</span></li>
+                                </ul>
+                                        <div class="text-center mb-2">
+                                            <a class="btn btn-outline-primary" href="https://loja.infiniti.app/checkout/15133723:1" target="_blank" >Pedir meu Chip!</a>
+                                        </div>
+                                </div>
+                                </div>
+                            </div>
+                    <!-- Preços Dinâmicos Next 19GB END-->
+            
+                    <!-- Preços Dinâmicos Next 25GB-->
+                        <div style="display: none;" class="col-lg-4 col-sm-6 yearly-price mb-grid-gutter">
+                            <div class="card card-active w-100">
+                              <div class="card-img-top bg-gradient text-center py-5 px-grid-gutter">
+                                <h3 class="text-light mb-0">Next 25GB</h3>
+                              </div>
+                              <div class="card-body px-grid-gutter py-grid-gutter">
+                                <div class="d-flex align-items-end py-2 px-4 mb-4"><span class="h2 fw-normal text-muted mb-1 me-2">R$</span><span class="price display-2 fw-normal text-primary px-1 me-2" data-current-price="124,90" data-new-price="124,90">124,90</span><span class="h3 fs-lg fw-medium text-muted mb-2">por<br>mês</span></div>
+                                <ul class="list-unstyled py-2 mb-4">
+                                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Ligações ILIMITADAS</span></li>
+                                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Assistência Médica por chat</span></li>
+                                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Whatsapp Grátis</span></li>
+                                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Internet sem cortes em 30 dias</span></li>
+                                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Roaming Nacional Grátis</span></li>
+                                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Acúmulo de Benefícios</span></li>
+                                    <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>3GB de Bônus ao fazer a portabilidade no 1° Mês</span></li>
+                                </ul>
+                                    <div class="text-center mb-2"><a class="btn btn-outline-primary" href="https://loja.infiniti.app/checkout/15133723:1" target="_blank" >Pedir meu Chip!</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                    <!-- Preços Dinâmicos Next 25GB End-->
+            
+                    <!-- Preços Dinâmicos Next 31GB-->
+                    <div style="display: none;" class="col-lg-4 col-sm-6 yearly-price mb-grid-gutter">
+                        <div class="card card-active w-100">
+                          <div class="card-img-top bg-gradient text-center py-5 px-grid-gutter">
+                            <h3 class="text-light mb-0">Next 31GB</h3>
+                          </div>
+                          <div class="card-body px-grid-gutter py-grid-gutter">
+                            <div class="d-flex align-items-end py-2 px-4 mb-4"><span class="h2 fw-normal text-muted mb-1 me-2">R$</span><span class="price display-2 fw-normal text-primary px-1 me-2" data-current-price="154,90" data-new-price="154,90">154,90</span><span class="h3 fs-lg fw-medium text-muted mb-2">por<br>mês</span></div>
+                            <ul class="list-unstyled py-2 mb-4">
+                                <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Ligações ILIMITADAS</span></li>
+                                <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Assistência Médica por chat</span></li>
+                                <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Whatsapp Grátis</span></li>
+                                <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Internet sem cortes em 30 dias</span></li>
+                                <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Roaming Nacional Grátis</span></li>
+                                <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Acúmulo de Benefícios</span></li>
+                                <li class="d-flex align-items-center mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>3GB de Bônus ao fazer a portabilidade no 1° Mês</span></li>
+                            </ul>
+                                <div class="text-center mb-2"><a class="btn btn-outline-primary" href="https://loja.infiniti.app/checkout/15133723:1" target="_blank" >Pedir meu Chip!</a></div>
+                                </div>
+                            </div>
+                        </div>
+                <!-- Preços Dinâmicos Next 31GB End-->
+          </div>
+        </div>
+      </section>
+
+        <!--em suas mãos- start-->
+
+        <section class="ptb-100 bg-image" style="background: url(img/Acumule.webp) center top no-repeat;background-size: cover;">            <div class="container">
+                <div
+                    class="row align-items-center justify-content-lg-between justify-content-md-center justify-content-sm-center">
+                    <div class="col-md-12 col-lg-6">
+                        <div class="hero-slider-content text-white py-5">
+                            <h1 class="text-white">Acumule seus benefícios </h1>
+                            <p class="lead">Aqui seus Dados e Ligações não expiram!<br>
+                                Caso não utilize durante o mês, seus Gigas e minutos restantes acumulam e somam-se ao
+                                novo pacote adquirido.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="sobre-nos" class="ptb-100 gray-light-bg ">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-md-12 col-lg-6">
+                        <div class="feature-contents section-heading">
+                            <h2>Queremos lhe dar todo o controle na palma da mão.</h2>
+                            <p>Nossa geração aprendeu a pensar fora da caixa e não seria diferente com a maneira que
+                                você se relaciona com sua operadora.</p>
+
+                            <ul class="check-list-wrap py-3">
+                                <li><b>Liberdade</b><br> Acreditamos que independência é oferecer o poder de escolha.
+                                    Resumindo bem a Filosofia da ICONNEXT.</li>
+                                <li><b>Responsabilidade</b><br> Temos por alvo entregar qualidade e satisfação,
+                                    através de um serviço transparente e direto, sem embromação. </li>
+                                <li><b>Compromisso</b><br> Queremos mudar a forma como você se relaciona com a sua
+                                    operadora de celular. Sem treta! Direto e objetivo, com atendimento diferenciado.
+                                </li>
+                            </ul>
+                            <!--
+                            <div class="action-btns mt-3">
+                                <a href="#" class="btn btn-brand-02 mr-3">Comprar Agora</a>
+                                <a href="#" class="btn btn-outline-brand-02">Saber Mais</a>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="mask-image">
+                            <img src="assets/img/queInfiniti-min.webp" class="img-fluid" alt="about">
+                            <div class="item-icon video-promo-content">
+                                <a href="https://youtu.be/yo-U3LpEsCo" class="video-play-icon text-center"
+                                    target="blank">
+                                    <i class="fas fa-play"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--about us section end-->
+        
+        <section id="depoimentos" class="promo-section ptb-100">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-10 col-lg-8">
+                        <div class="section-heading text-center">
+                            <h2>Depoimentos</h2>
+                        </div>
+                    </div>
+                </div>
+<!-- Testimonials carousel: Style 2 -->
+<div class="tns-carousel-wrapper row">
+
+    <!-- Actual carousel -->
+    <div class="col-md-8">
+      <div class="tns-carousel-inner" data-carousel-options='{"nav": false, "gutter": 20}'>
+        <blockquote class="blockquote mt-3 mb-0">
+          <p>A operadora é boa, não tenho nada a reclamar, atende nossas necessidades, e tem todo um suporte adequado.</p>
+          <footer class="d-flex align-items-center">
+            <img src="img/samuel.webp" class="rounded-circle" width="42" alt="Samuel Souza"/>
+            <div class="text-heading fs-md fw-medium ps-2 ms-1">Samuel Souza</div>
+          </footer>
+        </blockquote>
+        <blockquote class="blockquote mt-3 mb-0">
+          <p>Tenho a ICONNEXT a 3 meses e confesso que não sinto falta da operadora antiga. Estou muito feliz e pagando barato! =)</p>
+          <footer class="d-flex align-items-center">
+            <img src="img/yasmim.webp" class="rounded-circle" width="42" alt="Yasmin Barros"/>
+            <div class="text-heading fs-md fw-medium ps-2 ms-1">Yasmin Barros</div>
+          </footer>
+        </blockquote>
+        <blockquote class="blockquote mt-3 mb-0">
+          <p>TOPP!! Sem o que reclamar, 4.5G funciona bom d+ Tô bem feliz com a escolha que eu fiz!</p>
+          <footer class="d-flex align-items-center">
+            <img src="img/marcelo.webp" class="rounded-circle" width="42" alt="Marcelo Pinheiro"/>
+            <div class="text-heading fs-md fw-medium ps-2 ms-1">Marcelo Pinheiro</div>
+          </footer>
+        </blockquote>
+        <blockquote class="blockquote mt-3 mb-0">
+          <p>É top o chip. Plano acessível, entrega rápida. Mês todo conectado mesmo após o consumo da franquia, velocidade impressionante. Nada a reclamar. Recomendo a todos!!! Nota 10!!!</p>
+          <footer class="d-flex align-items-center">
+            <img src="img/ronilson.webp" class="rounded-circle" width="42" alt="Ronilson"/>
+            <div class="text-heading fs-md fw-medium ps-2 ms-1">Ronilson</div>
+          </footer>
+        </blockquote>
+        <blockquote class="blockquote mt-3 mb-0">
+            <p>A ICONNEXT está de parabéns, o chip funciona perfeitamente em qualquer lugar com internet de qualidade e ligações para todo o Brasil, e ainda me oferece a oportunidade de fazer cash back com as minhas indicações, já se tornou o meu chip principal!</p>
+            <footer class="d-flex align-items-center">
+              <img src="img/bruno.webp" class="rounded-circle" width="42" alt="Bruno César"/>
+              <div class="text-heading fs-md fw-medium ps-2 ms-1">Bruno César</div>
+            </footer>
+          </blockquote>
+      </div>
+    </div>
+  
+    <!-- Custom pager -->
+    <div class="col-md-4">
+      <div class="tns-carousel-pager d-flex flex-wrap flex-md-column justify-content-center align-items-center align-items-md-start border-start pt-4 mt-4 ps-md-3 pt-md-0 mt-md-0">
+        <a href="#" class="swap-image active mx-4 my-3 my-md-4" data-goto="1">
+            <h5 class="blue swap-to" >DDD 31 - MG</h5>
+            <h5 class="swap-from" >DDD 31 - MG</h5>
+        </a>
+        <a href="#" class="swap-image mx-4 my-3 my-md-4" data-goto="2">
+            <h5 class="blue swap-to" >DDD 61 - GO</h5>
+            <h5 class="swap-from" >DDD 61 - GO</h5>
+        </a>
+        <a href="#" class="swap-image mx-4 my-3 my-md-4" data-goto="3">
+            <h5 class="blue swap-to" >DDD 61 - DF</h5>
+            <h5 class="swap-from" >DDD 61 - DF</h5>
+        </a>
+        <a href="#" class="swap-image mx-4 my-3 my-md-4" data-goto="4">
+            <h5 class="blue swap-to" >DDD 69 - RO</h5>
+            <h5 class="swap-from" >DDD 69 - RO</h5>
+        </a>
+        <a href="#" class="swap-image mx-4 my-3 my-md-4" data-goto="5">
+            <h5 class="blue swap-to" >DDD 21 - RJ</h5>
+            <h5 class="swap-from" >DDD 21 - RJ</h5>
+          </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+        <!--faq or accordion section start-->
+        <section id="faq" class="container py-5 my-4 my-sm-0 py-sm-6 py-md-7">
+            <div class="container">
+                <div class="row justify-content-center-faq">
+                    <div class="col-md-9 col-lg-8">
+                        <div class="section-heading text-center mb-5">
+                            <h2>Perguntas Frequentes</h2>
+                            <p>Encontre as respostas para as perguntas que você talvez tenha, e se não encontrar, entre
+                                em contato conosco!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-md-12 col-lg-6 mb-5 mb-md-5 mb-sm-5 mb-lg-0">
+                        <div class="mask-image">
+                            <img src="assets/img/SUPORTE-ONLINE-min.webp" alt="download" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6">
+                        <div id="accordion" class="accordion faq-wrap">
+                            <div class="card my-3 shadow">
+                                <a class="card-header collapsed" data-toggle="collapse" href="#collapse0"
+                                    aria-expanded="false">
+                                    <h6 class="mb-0 d-inline-block">É necessário pagar alguma taxa para aderir ao plano?
+                                    </h6>
+                                </a>
+                                <div id="collapse0" class="collapse" data-parent="#accordion">
+                                    <div class="card-body white-bg">
+                                        <p>Não há cobrança de taxa de adesão ao Plano. Para aderir ao plano, o Cliente
+                                            deve adquirir e ativar previamente o chip da ICONNEXT no Web aplicativo. A
+                                            ativação do plano é feita automaticamente após a realização da primeira
+                                            recarga, no valor mínimo de R$ 29,90 (Vinte e nove reais e
+                                            noventa centavos), após o isso o Cliente receberá automaticamente a
+                                            confirmação de
+                                            ativação do plano por SMS e/ou App</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card my-3 shadow">
+                                <a class="card-header collapsed" data-toggle="collapse" href="#collapse1"
+                                    aria-expanded="false">
+                                    <h6 class="mb-0 d-inline-block">Como é feita a renovação do plano?</h6>
+                                </a>
+                                <div id="collapse1" class="collapse " data-parent="#accordion">
+                                    <div class="card-body white-bg">
+                                        <p>A renovação do plano é automática, e ocorre no dia seguinte ao término da
+                                            validade do mesmo, que é de 30 (trinta) dias. Para isso, o Cliente precisa
+                                            efetuar o pagamento da sua próxima assinatura através de um dos métodos
+                                            disponíveis no Web aplicativo ICONNEXT (Bolet e Cartão de Crédito). O Cliente poderá manifestar-se em contrário, pela não renovação
+                                            do plano, podendo ainda, optar por outra promoção em vigor se assim o
+                                            desejar, basta efetuar a solicitação pelo APP ICONNEXT.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card my-3 shadow">
+                                <a class="card-header collapsed" data-toggle="collapse" href="#collapse2"
+                                    aria-expanded="false">
+                                    <h6 class="mb-0 d-inline-block">Como faço a portabilidade para a ICONNEXT?</h6>
+                                </a>
+                                <div id="collapse2" class="collapse " data-parent="#accordion">
+                                    <div class="card-body white-bg">
+                                        <p>O titular da conta utiliza o seu Web app ou o CHAT para solicitar. Serão solicitadas as
+                                            seguintes informações:<br>
+                                            Nome e CPF<br>
+                                            Número que deseja manter<br>
+                                            Operadora antiga<br>
+                                            *As linhas precisam estar no mesmo CPF e DDD<br>
+                                            Pronto! Em até 5 dias úteis o seu Plano ICONNEXT estará disponível no seu
+                                            número.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card my-3 shadow">
+                                <a class="card-header collapsed" data-toggle="collapse" href="#collapse3"
+                                    aria-expanded="false">
+                                    <h6 class="mb-0 d-inline-block">É possível fazer ligações internacionais (DDI)?</h6>
+                                </a>
+                                <div id="collapse3" class="collapse " data-parent="#accordion">
+                                    <div class="card-body white-bg">
+                                        <p>Não é possível. Os benefícios dos serviços de voz/sms do plano não são
+                                            válidos
+                                            para ligações internacionais.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!--footer section start-->
+    <!--when you want to remove subscribe newsletter container then you should remove .footer-with-newsletter class-->
+    <footer class="footer-1 gradient-bg ptb-60 footer-with-newsletter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-4 mb-4 mb-md-4 mb-sm-4 mb-lg-0">
+                    <a href="#" class="navbar-brand mb-2">
+                        <img src="img/logo/logo-light.webp" alt="logo" class="img-fluid"
+                            style="width: 10rem;">
+                    </a>
+                    <br>
+                    <p>Somos uma empresa brasileira com visão global, que impulsiona conexões mais inteligentes e de
+                        livre acesso.</p>
+                    <div class="list-inline social-list-default background-color social-hover-2 mt-2">
+                        <li class="list-inline-item"><a class="twitter" target="_blank"
+                                href="https://www.facebook.com/infintioperadora"><i class="fab fa-facebook"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a class="youtube" target="_blank"
+                                href="https://www.instagram.com/infiniti.app/"><i class="fab fa-instagram"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a class="youtube" target="_blank"
+                                href="https://twitter.com/ICONNEXT_app"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a class="youtube" target="_blank" 
+                                href="https://www.linkedin.com/company/operadoraICONNEXT/"><i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-8">
+                    <div class="row mt-0">
+                        <div class="col-sm-6 col-md-3 col-lg-3 mb-4 mb-sm-4 mb-md-0 mb-lg-0">
+                            <h6 class="text-uppercase">Atendimento</h6>
+                            <ul>
+                                <li>
+                                    <a href="#features">Fale com a gente</a>
+                                </li>
+                                <li>
+                                    <a href="#features">Recargas</a>
+                                </li>
+                                <li>
+                                    <a href="#features">Acompanhe seu consumo</a>
+                                </li>
+                                <li>
+                                    <a href="#features">Mantenha seus benefícios</a>
+                                </li>
+                                <li>
+                                    <a href="#features">Suporte humanizado</a>
+                                </li>
+                                <li>
+                                    
+                                    <a href="https://infiniti.app/acessos/portais/programas/politica-de-privacidade"target="_blank">Política de Privacidade</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-3 col-lg-3 mb-4 mb-sm-4 mb-md-0 mb-lg-0">
+                            <h6 class="text-uppercase">Ofertas</h6>
+                            <ul>
+                                <li>
+                                    <a href="https://loja.infiniti.app/checkout/15139242:1">5 GB</a>
+                                </li>
+                                <li>
+                                    <a href="https://loja.infiniti.app/checkout/15133737:1">7 GB</a>
+                                </li>
+                                <li>
+                                    <a href="https://loja.infiniti.app/checkout/15133736:1">9 GB</a>
+                                </li>
+                                <li>
+                                    <a href="https://loja.infiniti.app/checkout/15137779:1">17 GB</a>
+                                </li>
+                                <li>
+                                    <a href="https://loja.infiniti.app/checkout/15133730:1">19 GB</a>
+                                </li>
+                                <li>
+                                    <a href="https://loja.infiniti.app/checkout/15133728:1">25 GB</a>
+                                </li>
+                                <li>
+                                    <a href="https://loja.infiniti.app/checkout/15133726:1">31 GB</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-3 col-lg-3">
+                            <h6 class="text-uppercase">Suporte</h6>
+                            <ul>
+                                <li>
+                                    <a href="https://bit.ly/ICONNEXTt" target="_blank">CHAT</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end of container-->
+    </footer>
+    <!--footer bottom copyright start-->
+    <div class="footer-bottom py-3 gray-light-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-7">
+                    <div class="copyright-wrap small-text">
+                        <p class="mb-0">&copy; 2021 ICONNEXT TECNOLOGIA EM COMUNICAÇÃO LTDA CNPJ: 33.093.462/0001-50.
+                            TODOS OS DIREITOS RESERVADOS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/5f284e7d9b7cf26e73c1e433/1eg92khtn';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+    <!--footer bottom copyright end-->
+    <!--footer section end-->
+    <!--scroll bottom to top button start-->
+    <!-- <div class="scroll-top scroll-to-target primary-bg text-white" data-target="html">
+        <span class="fas fa-hand-point-up"></span>
+    </div> -->
+    <!--scroll bottom to top button end-->
+    <!--build:js-->
+    <script src="assets/js/vendors/jquery-3.5.1.min.js"></script>
+    <script src="assets/js/vendors/popper.min.js"></script>
+    <script src="assets/js/vendors/bootstrap.min.js"></script>
+    <script src="assets/js/vendors/jquery.easing.min.js"></script>
+    <script src="assets/js/vendors/owl.carousel.min.js"></script>
+    <script src="assets/js/vendors/jquery.waypoints.min.js"></script>
+    <script src="assets/js/vendors/jquery.rcounterup.js"></script>
+    <script src="assets/js/vendors/magnific-popup.min.js"></script>
+    <script src="assets/js/vendors/validator.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="vendor/parallax-js/dist/parallax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+
+    <!-- Main theme script-->
+    <script src="js/theme.min.js"></script>
+    <!--endbuild-->
+    <style>
+        @font-face {
+          font-family: 'iconnext';
+          src: url("./assets/fonts/iconnext.eot");
+          src: url("./assets/fonts/iconnext.eot?#iefix") format("embedded-opentype"), url("./assets/fonts/iconnext.woff") format("woff"), url("./assets/fonts/iconnext.ttf") format("truetype"), url("./assets/fonts/iconnext.svg") format("svg");
+          font-weight: normal;
+          font-style: normal;
+        }
+
+        @font-face {
+          font-family: 'Font Awesome 5 Free';
+          font-style: normal;
+          font-weight: 900;
+          font-display: block;
+          src: url("./assets/webfonts/fa-solid-900.eot");
+          src: url("./assets/webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("./assets/webfonts/fa-solid-900.woff2") format("woff2"), url("./assets/webfonts/fa-solid-900.woff") format("woff"), url("./assets/webfonts/fa-solid-900.ttf") format("truetype"), url("./assets/webfonts/fa-solid-900.svg#fontawesome") format("svg");
+        }
+
+        @font-face {
+          font-family: 'Font Awesome 5 Brands';
+          font-style: normal;
+          font-weight: 400;
+          font-display: block;
+          src: url("./assets/webfonts/fa-brands-400.eot");
+          src: url("./assets/webfonts/fa-brands-400.eot?#iefix") format("embedded-opentype"), url("./assets/webfonts/fa-brands-400.woff2") format("woff2"), url("./assets/webfonts/fa-brands-400.woff") format("woff"), url("./assets/webfonts/fa-brands-400.ttf") format("truetype"), url("./assets/webfonts/fa-brands-400.svg#fontawesome") format("svg");
+        }
+    </style>
+
+ 
+</body>
+
+</html>
